@@ -3,8 +3,8 @@
 
         <h3>{{ booking.name }}</h3>
         <p>{{ booking.email }}</p>
-        <p v-on:click= v-if=booking.checkedIn>Checked In? &#9989; </p>
-        <p v-on:click= v-if=!booking.checkedIn>Checked In? &#10060; </p>
+        <p v-if=booking.checkedIn>Checked in? &#9989; </p>
+        <p v-if=!booking.checkedIn>Checked in? &#10060; </p>
 
 
         <button type="button" v-on:click="deleteBooking">Booking Begone</button>
@@ -23,7 +23,7 @@ export default {
         deleteBooking() {
             BookingService.deleteBooking(this.booking._id)
             .then(() => eventBus.$emit('booking-deleted', this.booking._id))
-        }    
+        },    
 
         updateBooking() {
             BookingService.updateBooking(this.booking._id)

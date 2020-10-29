@@ -21,10 +21,14 @@ export default {
     })
   },
 
-  updateBooking(id) {
-    return fetch(baseURL + id, {
-      method: 'PATCH',
-      
+  updateBooking(booking) {
+    return fetch(baseURL + booking._id, {
+      method: 'PUT',
+      body: JSON.stringify(booking),
+      headers: { 
+        'Content-Type': 'application/json' 
+      }
     })
-  }
+      .then(res => res.json());
+  },
 }
